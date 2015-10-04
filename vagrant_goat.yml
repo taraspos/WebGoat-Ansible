@@ -1,0 +1,15 @@
+- hosts: all
+  remote_user: vagrant
+  vars:
+    - firewall_allowed_tcp_ports:
+      - "20"
+      - "80"
+      - "8080"
+    - firewall_forwarded_tcp_ports:
+      - { src: "80", dest: "8080" }
+  roles:
+    - firewall
+    - common
+    - jdk
+    - tomcat
+    - webgoat

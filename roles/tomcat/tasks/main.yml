@@ -1,0 +1,31 @@
+- name: downlaod tomcat
+  get_url:
+    url: 'http://apache.ip-connect.vn.ua/tomcat/tomcat-8/v8.0.27/bin/apache-tomcat-8.0.27.tar.gz'
+    dest: '/tmp/'
+
+- name: unarchive tomcat
+  unarchive:
+    src: '/tmp/apache-tomcat-8.0.27.tar.gz'
+    copy: 'no'
+    dest: '/opt/'
+  sudo: yes
+
+- name: copy tomcat init script
+  copy:
+    src: 'tomcat'
+    dest: '/etc/init.d/tomcat'
+    mode: '755'
+  sudo: yes
+
+- name: start tomcat
+  service:
+    name: 'tomcat'
+    state: 'started'
+    enabled: 'yes'
+  sudo: yes
+
+- name: wait for tomcat
+  wait_for:
+    port: '8080'
+    timeout: '900'
+    host: '{{ ansible_nodename }}'

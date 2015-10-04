@@ -1,0 +1,5 @@
+- name: download web-goat
+  get_url:
+    url: 'https://github.com/WebGoat/WebGoat-Legacy/releases/download/v6.0.1/WebGoat-6.0.1.war'
+    dest: '/opt/apache-tomcat-8.0.27/webapps/webgoat.war'
+  sudo: yes

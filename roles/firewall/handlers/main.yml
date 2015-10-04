@@ -1,0 +1,5 @@
+---
+- name: restart firewall
+  command: service iptables save
+  command: service firewall restart
+  sudo: yes

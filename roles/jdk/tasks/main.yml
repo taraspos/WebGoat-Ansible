@@ -1,0 +1,15 @@
+- name: download Oracle JDK8
+  command: > 
+      wget -N -P /tmp --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
+      creates=/tmp/jdk-8u60-linux-x64.rpm
+
+- name: install jdk8
+  yum:
+    name: '/tmp/jdk-8u60-linux-x64.rpm'
+    state: 'installed'
+  sudo: yes
+
+
+
+
+

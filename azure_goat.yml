@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+  vars:
+    - vm_password: 's0me_pa55word!'
+    - vm_name: 'webgoatlab'
+  roles:
+    - launch_azure_vm
+
+- hosts: goat
+  remote_user: 'goat'
+  vars:
+    - firewall_allowed_tcp_ports:
+      - "20"
+      - "80"
+      - "8080"
+    - firewall_forwarded_tcp_ports:
+      - { src: "80", dest: "8080" }
+  roles:
+    - common
+    - firewall
+    - jdk
+    - tomcat
+    - webgoat

@@ -1,0 +1,5 @@
+- name: install genereal staf
+  yum:
+   name: 'libselinux-python'
+   state: 'latest'
+  sudo: yes

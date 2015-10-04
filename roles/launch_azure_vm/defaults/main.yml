@@ -1,0 +1,9 @@
+---
+vm_name: 'webgoatlab'
+vm_password: 'Fresh_goat@'
+vm_ssh_port: '22'
+vm_storage_account: 'webgoatlab'
+vm_location: 'East US 2'
+vm_size: 'Small'
+vm_image: '5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-67-20150815'
+vm_ssh_key: '~/.ssh/webgoatlab.pem'

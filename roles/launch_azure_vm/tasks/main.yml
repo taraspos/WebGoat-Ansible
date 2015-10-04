@@ -1,0 +1,33 @@
+---
+- local_action:
+    module: azure
+    name: '{{vm_name}}'
+    role_size: '{{vm_size}}'
+    image: '{{vm_image}}'
+    ssh_cert_path: '{{vm_ssh_key}}'
+    password: '{{ vm_password }}'
+    location: '{{ vm_location }}'
+    user: 'goat'
+    wait: yes
+    storage_account: '{{ vm_storage_account }}'
+    endpoints: '{{vm_ssh_port}},8080,80'
+  register: goat
+
+- local_action:
+    module: add_host
+      group=goat
+      name={{ goat.public_dns_name }}
+      ansible_ssh_private_key_file={{vm_ssh_key}}
+      ansible_sudo_pass={{vm_password}}
+      ansible_ssh_port={{vm_ssh_port}}
+
+- name: wait when istance become ready to use
+  local_action:
+   module: 'wait_for'
+   host: '{{ goat.public_dns_name }}'
+   port: "{{vm_ssh_port}}"
+   timeout: "320"
+   state: "started"
+
+- pause: seconds=30 prompt="Wait couple seconds for Azure to set up ssh key in instance"
+  when: goat|changed
