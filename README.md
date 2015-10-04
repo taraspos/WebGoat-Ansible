@@ -26,15 +26,11 @@ npm install azurecli
 ```
 
 * Login into your azure subscription:
-   * Generate link for Azure Subscription Key
-   
-```azure account download```
-   * Open link in Web Browser and download key
+   * Generate link for Azure Subscription Key with:
+   ```azure account download```
 
-   * Import key via Azure cli
-```
-azure account import <path to downloaded file>
-```
+   * Open link in Web Browser and download key
+   * Import key via Azure cli with: ```azure account import <path to downloaded file>```
 
 * Now we need to create valid Storage Account for our VM:
 ```
