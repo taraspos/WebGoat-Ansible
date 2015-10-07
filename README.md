@@ -53,10 +53,7 @@ chmod 600 ~/.ssh/webgoatlab.pem
 openssl x509 -inform pem -in ~/.ssh/webgoatlab.pem -outform der -out ~/.ssh/manage.cer
 ```
 
-* Export generated Management Certificate to the azure account:
-```
-azure account cert export -f ~/.ssh/manage.cer
-```
+* Now you need to upload ~/.ssh/manage.cer certificate to Azure. This can be done on the old azure website(manage.windowsazure.com) under the Settings -> MANAGEMENT CERTIFICATES -> UPLOAD A MANAGEMENT CERTIFICATE -> select your ~/.ssh/manage.cer
 
 * Set environment variables with your Azure Subscription ID and Path to Management Certificate
 ```
