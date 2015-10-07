@@ -47,14 +47,10 @@ openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out ~/.s
 ```
 chmod 600 ~/.ssh/webgoatlab.pem
 ```
-
-* Generate management certificate from existing ssh key:
+* End export managment cert for your subscribtion
 ```
-openssl x509 -inform pem -in ~/.ssh/webgoatlab.pem -outform der -out ~/.ssh/manage.cer
+azure account cert export -f ~/.ssh/manage.cer
 ```
-
-* Now you need to upload ~/.ssh/manage.cer certificate to Azure. This can be done on the old azure website(manage.windowsazure.com) under the Settings -> MANAGEMENT CERTIFICATES -> UPLOAD A MANAGEMENT CERTIFICATE -> select your ~/.ssh/manage.cer
-
 * Set environment variables with your Azure Subscription ID and Path to Management Certificate
 ```
 export AZURE_SUBSCRIPTION_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
