@@ -10,7 +10,7 @@
   remote_user: 'goat'
   vars:
     - firewall_allowed_tcp_ports:
-      - "20"
+      - "22"
       - "80"
       - "8080"
     - firewall_forwarded_tcp_ports:
