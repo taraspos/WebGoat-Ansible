@@ -21,8 +21,8 @@ In order to start launching and provision Azure VM you need to do next preparati
 
 * Install Azure Command Line tools
 ```
-yum install npm ## or apt-get install npm
-npm install -g azure-cli
+sudo yum install npm ## or apt-get install npm
+sudo npm install -g azure-cli
 ```
 
 * Login into your azure subscription:
